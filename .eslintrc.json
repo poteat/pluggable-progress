@@ -25,5 +25,8 @@
     "plugin:prettier/recommended",
     "plugin:json/recommended",
     "adjunct"
-  ]
+  ],
+  "rules": {
+    "lodash/import-scope": ["error", "member"]
+  }
 }

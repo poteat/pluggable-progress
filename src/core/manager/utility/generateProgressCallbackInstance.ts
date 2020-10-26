@@ -18,6 +18,13 @@ export function generateProgressCallbackInstance<
   return <ParticularType extends ProgressImplementations[number]["type"]>(
     _type: ParticularType
   ) => {
+    const stepConstructor = stepImplementations[_type];
+
+    if (!stepConstructor) {
+      throw new Error(
+        `No registered progress callback handler for "${_type}".`
+      );
+    }
     return (
       progressCallback: GenericProgressCallbackType<
         Extract<
@@ -28,15 +35,7 @@ export function generateProgressCallbackInstance<
     ) => {
       let currentStep = 0;
 
-      const { type, callback } = progressCallback;
-
-      const stepConstructor = stepImplementations[type];
-
-      if (!stepConstructor) {
-        throw new Error(
-          `No registered progress callback handler for "${type}".`
-        );
-      }
+      const { callback } = progressCallback;
 
       const step = stepConstructor(progressCallback).step;
 
@@ -47,7 +46,7 @@ export function generateProgressCallbackInstance<
             { type: ParticularType }
           >["_type"]["stepParameters"]
         ) => {
-          await step!({
+          await step({
             currentStep,
             callback,
             ...stepParameters,
