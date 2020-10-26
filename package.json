@@ -1,6 +1,6 @@
 {
   "name": "pluggable-progress",
-  "version": "0.0.2",
+  "version": "1.0.0",
   "description": "A pluggable library for reporting on progress.",
   "main": "./dist/src/index.js",
   "types": "./dist/src/index.d.ts",
