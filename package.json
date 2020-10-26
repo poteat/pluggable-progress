@@ -1,7 +1,7 @@
 {
-  "name": "ts-type-it",
-  "version": "1.2.2",
-  "description": "An npm library for checking deep types via type predicates.",
+  "name": "pluggable-progress",
+  "version": "0.0.1",
+  "description": "A pluggable library for reporting on progress.",
   "main": "./dist/src/index.js",
   "types": "./dist/src/index.d.ts",
   "scripts": {
@@ -15,7 +15,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/poteat/type-it.git"
+    "url": "git+ssh://git@github.com/poteat/pluggable-progress.git"
   },
   "keywords": [
     "tuple",
@@ -28,9 +28,9 @@
   "author": "Michael Poteat <me@mpote.at>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/poteat/type-it/issues"
+    "url": "https://github.com/poteat/pluggable-progress/issues"
   },
-  "homepage": "https://github.com/poteat/type-it#readme",
+  "homepage": "https://github.com/poteat/pluggable-progress#readme",
   "devDependencies": {
     "@types/lodash": "^4.14.162",
     "@types/node": "^14.14.3",
