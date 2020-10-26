@@ -1,8 +1,8 @@
 ![pluggable-progress](./logo/pluggable-progress.png)
 
-A pluggable Typescript library for defining and using progress callback types, e.g. temporal, frequency, percentage, etc.
+A pluggable Typescript library for defining and using custom progress reporters.
 
-Also a great example of plugin-based architecture with dependent types!
+> Also a great example of plugin-based architecture with dependent types!
 
 ---
 
