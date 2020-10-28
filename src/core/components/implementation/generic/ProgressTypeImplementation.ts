@@ -18,11 +18,7 @@ export type ProgressTypeImplementation = {
      * step, choosing whether or not the application callback should be
      * executed, and performing that call via its own internal logic and state.
      */
-    step(x: {
-      currentStep: number;
-      lastReportStep: number;
-      callback: any;
-    }): Promise<void>;
+    step(x: { currentStep: number; callback: any }): Promise<void>;
   };
 
   /**

@@ -1,7 +1,8 @@
-import { A } from "ts-toolbelt";
-
 import { GenericProgressCallbackType } from "../../../utility/callback/GenericProgressCallbackType";
+import { StepCallback } from "../../../utility/step/application/StepCallback";
 import { ProgressTypeImplementation } from "../../components/implementation/generic/ProgressTypeImplementation";
+import { SelectSpecification } from "./selection/specification/SelectSpecification";
+import { StepParameters } from "./selection/step/StepParameters";
 
 /**
  * Given a stepImplementations set, a particular progress type, and a defined
@@ -27,10 +28,7 @@ export function generateProgressCallbackInstance<
     }
     return (
       progressCallback: GenericProgressCallbackType<
-        Extract<
-          ProgressImplementations[number],
-          { type: ParticularType }
-        >["_type"]
+        SelectSpecification<ProgressImplementations, ParticularType>
       >
     ) => {
       let currentStep = 0;
@@ -41,10 +39,10 @@ export function generateProgressCallbackInstance<
 
       return {
         step: (async (
-          stepParameters: Extract<
-            ProgressImplementations[number],
-            { type: ParticularType }
-          >["_type"]["stepParameters"]
+          stepParameters: StepParameters<
+            ProgressImplementations,
+            ParticularType
+          >
         ) => {
           await step({
             currentStep,
@@ -53,20 +51,9 @@ export function generateProgressCallbackInstance<
           });
 
           currentStep++;
-        }) as A.Equals<
-          Extract<
-            ProgressImplementations[number],
-            { type: ParticularType }
-          >["_type"]["stepParameters"],
-          any
-        > extends 0
-          ? (
-              x: Extract<
-                ProgressImplementations[number],
-                { type: ParticularType }
-              >["_type"]["stepParameters"]
-            ) => Promise<void>
-          : () => Promise<void>,
+        }) as StepCallback<
+          StepParameters<ProgressImplementations, ParticularType>
+        >,
       };
     };
   };

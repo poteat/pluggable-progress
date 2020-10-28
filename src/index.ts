@@ -8,3 +8,6 @@ export { TemporalProgress } from "./built-ins/temporal/TemporalProgress";
 // Some types needed for building custom types
 export { ProgressType } from "./core/components/implementation/ProgressType";
 export { ProgressStepParameters } from "./utility/step/parameters/ProgressStepParameters";
+
+// Some types useful for the application
+export { StepCallback } from "./utility/step/application/StepCallback";
